@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -13,8 +15,18 @@
     "express": "^4.18.2",
     "node-fetch": "^3.3.2"
   },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "engines": {
     "node": ">=18.0.0"
   },
+  "keywords": [
+    "education",
+    "paystack",
+    "groq",
+    "api",
+    "backend"
+  ],
   "license": "MIT"
 }
