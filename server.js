@@ -198,7 +198,7 @@ app.get("/api/health", async (req, res) => {
   }
 });
 
-// 💳 PAYSTACK (inchangé)
+// 💳 PAYSTACK
 app.post("/create-payment", async (req, res) => {
   const { email, amount, sourcePage } = req.body;
 
@@ -249,43 +249,4 @@ app.listen(PORT, () => {
   console.log(`🚀 Serveur lancé sur le port ${PORT}`);
   console.log(`🔐 ${GROQ_API_KEYS.length} clés Groq prêtes à l'emploi`);
   console.log(`🌍 Health check: http://localhost:${PORT}/api/health`);
-});        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        amount: amount * 100,
-        currency: "XOF",
-        callback_url: callbackUrl,
-      }),
-    });
-
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    console.error("❌ Erreur create-payment:", err);
-    res.status(500).json({ error: "Erreur interne du serveur" });
-  }
-});
-
-app.get("/verify-payment/:reference", async (req, res) => {
-  const { reference } = req.params;
-
-  try {
-    const response = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
-      headers: { "Authorization": `Bearer ${PAYSTACK_SECRET_KEY}` },
-    });
-
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    console.error("❌ Erreur verify-payment:", err);
-    res.status(500).json({ error: "Erreur interne du serveur" });
-  }
-});
-
-// 🚀 Lancer le serveur
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Serveur lancé sur le port ${PORT}`);
-  console.log(`🔐 ${GROQ_API_KEYS.length} clés Groq prêtes à l’emploi`);
 });
