@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 // 🔑 Clé secrète Paystack (mode test)
-const PAYSTACK_SECRET_KEY = "sk_live_23ce07cabc00a8911584d968d910b8496b0eeddd";
+const PAYSTACK_SECRET_KEY = "sk_test_8f5a4fa740888516c795556099ff1dc0042e27b8";
 
 // ✅ Route test
 app.get("/", (req, res) => {
